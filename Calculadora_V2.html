@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução CSS e Lógica da Calculadora</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="img_banner">
+        <div class="banner">
+            <h3 class="subtitulo_banner">SPTecher's Machine</h3>
+            <h1 class="titulo_banner">Sistema De Numeração</h1>
+            <p class="comentario_banner">
+                Com a calculadora de conversão, é possível converter rapidamente entre Octal,
+                Decimal, Hexadecimal e muito mais! Chega de perder tempo com cálculos complicados.
+            </p>
+            <a href="#calculadora"><button class="btn_banner" onclick="">Acessar Calculadora</button></a>
+        </div>
+    </div>
+
+
+    <div class="sobre_calculadora">
+        <div class="descricao_calculadora">
+            <div class="img_descricao">
+                <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--f7hErbRV--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/d6jbpwooxc1kpppsi1ep.jpg"
+                    alt="">
+            </div>
+            <div class="introducao_calculadora">
+                <h1>Você sabe o que são bases numéricas?</h1>
+                <p>
+                    Os números podem ser representados de diferentes formas, dependendo do sistema de numeração
+                    utilizado.
+                    Cada sistema usa uma base numérica , que determina quantos símbolos podem ser usados ​​antes de
+                    precisar
+                    adicionar uma nova posição. No nosso cotidiano, utilizamos a base decimal, mas na computação, por
+                    exemplo, o sistema binário é essencial para representar dados e realizar operações lógicas.
+                    <br><br>
+                    Cada número base segue um padrão específico e pode ser convertido para outro. Isso é importante para
+                    diversas áreas, como programação, eletrônica e matemática aplicada. A conversão entre bases permite
+                    que
+                    os números sejam traduzidos de um sistema para outro, garantindo compatibilidade e eficiência no
+                    processamento de informações.
+                </p>
+            </div>
+        </div>
+
+
+        <h1 class="titulo_base_numerica">Principais Bases Numéricas</h1>
+        <div class="bases_numericas_calculadora">
+            <div class="base_numerica">
+                <div class="icon_base">
+                    <img src="./img/binario_icon.png" alt="">
+                </div>
+
+                <h3>Base Binária (Base 2)</h3>
+                <p>Fundamental para a computação. Usa apenas dois dígitos (0 e 1), representando os estados de ligado e
+                    desligado nos circuitos eletrônicos.</p>
+            </div>
+            <div class="base_numerica">
+                <div class="icon_base">
+                    <img src="./img/decimal_icon.png" alt="">
+                </div>
+
+                <h3>Base Decimal (Base 10)</h3>
+                <p>O sistema mais comum no cotidiano. Possui 10 dígitos (0 a 9), e cada posição representa uma potência
+                    de 10. É utilizado para cálculos gerais e contagem.</p>
+            </div>
+            <div class="base_numerica">
+                <div class="icon_base">
+                    <img src="./img/octal_icon.png" alt="">
+                </div>
+
+                <h3>Base Octal (Base 8)</h3>
+                <p>Utilizada em computação para representar números binários de forma mais compacta. Possui oito dígitos
+                    (0 a 7) e facilita certas operações matemáticas.</p>
+            </div>
+            <div class="base_numerica">
+                <div class="icon_base">
+                    <img src="./img/hexadecimal_icon.png" alt="">
+                </div>
+
+                <h3>Base Hexadecimal (Base 16)</h3>
+                <p>Usada na programação e eletrônica para representar números binários de forma compacta. Usa os dígitos
+                    de 0 a 9 e como letras A a F (10 a 15).</p>
+            </div>
+        </div>
+    </div>
+    <h2 class="titulo_calculadora" id="calculadora">Vamos Converter! 😃</h2>
+    <hr class="barra_calculadora">
+
+    <div class="calculadora" >
+        <div class="calculadora_parametros">
+            <h3 class="nome_calculadora">SpTecher's Machine</h3>
+            <p class="descricao_parametros">Converta números entre diferentes bases de forma simples! Selecione a base
+                do número e digite o valor.</p>
+            <hr class="barra_parametros">
+            <p class="calculadora_parametro1">Escolha a base do número de entrada:</p>
+            <select class="calculadora_select_base" id="select_base">
+                <option value="" disabled selected>Selecione a base numérica...</option>
+                <option value="decimal">Decimal</option>
+                <option value="binario">Binário</option>
+                <option value="octal">Octal</option>
+                <option value="hexadecimal">Hexadecimal</option>
+            </select>
+
+            <p class="calculadora_parametro2">Digite o valor nessa base:</p>
+            <input type="text" id="input_valor" class="calculadora_input_numero">
+            <button onclick="calcular()" class="calculadora_btn_calcular">Calcular</button>
+        </div>
+
+        <div class="calculadora_separacao"></div>
+
+        <div class="calculadora_resultado" id="calculadora_resultado">
+        </div>
+    </div>
+
+    <footer>
+        <h2>Desenvolvedores:</h2>
+        <p>- Fernando Ramirez</p>
+        <p>- Vinicius Ventura</p>
+    </footer>
+</body>
+
+
+</html>
+<script>
+    function calcular() {
+        // DECLARAÇÕES DAS VARIÁVEIS
+        var valor = input_valor.value;
+        var tipoBaseNumerica = select_base.value;
+        var valorEmDecimal = 0;
+        var potencia = 0;
+        var tamanho = valor.length;
+
+        // VERIFICAÇÃO SE A BASE NUMÉRICA FOI SELECIONADA E QUAL DELAS FOI SELECIONADA
+        if (tipoBaseNumerica == 'decimal') {
+            // VERIFICA SE O VALOR É UM NÚMERO VÁLIDO
+            if (!isNaN(Number(valor))) {
+                valorEmDecimal = Number(valor);
+            } else {
+                alert('INSIRA UM VALOR VÁLIDO');
+            }
+
+        } else if (tipoBaseNumerica == 'binario') {
+            // VERIFICA SE O VALOR CONTÉM APENAS DÍGITOS 0 E 1
+            if (/^[0-1]+$/.test(valor)) {
+                while (tamanho > 0) {
+                    var digito = valor[tamanho - 1]; // PEGA O ÚLTIMO DÍGITO
+                    valorEmDecimal += digito * (2 ** potencia); // CONVERTE PARA DECIMAL
+
+                    tamanho--
+                    potencia++;
+                }
+            } else {
+                alert('INSIRA UM VALOR VÁLIDO');
+            }
+        } else if (tipoBaseNumerica == 'octal') {
+            // VERIFICA SE O VALOR CONTÉM APENAS DÍGITOS DE 0 A 7
+            if (/^[0-7]+$/.test(valor)) {
+                while (tamanho > 0) {
+                    var digito = valor[tamanho - 1]; // PEGA O ÚLTIMO DÍGITO
+                    valorEmDecimal += digito * (8 ** potencia); // CONVERTE PARA DECIMAL
+
+                    tamanho--
+                    potencia++;
+                }
+            } else {
+                alert('INSIRA UM VALOR VÁLIDO');
+            }
+
+        } else if (tipoBaseNumerica == 'hexadecimal') {
+            // VERIFICA SE O VALOR CONTÉM APENAS DÍGITOS DE 0 A 9 E LETRAS A-F
+            if (/^[0-9a-fA-F]+$/.test(valor)) {
+                while (tamanho > 0) {
+                    var digito = valor[tamanho - 1]; // PEGA O ÚLTIMO DÍGITO
+
+                    // CONVERTE O CARACTERE HEXADECIMAL PARA UM VALOR NUMÉRICO
+                    if (digito == 'A' || digito == 'a') {
+                        digito = 10;
+                    } else if (digito == 'B' || digito == 'b') {
+                        digito = 11;
+                    } else if (digito == 'C' || digito == 'c') {
+                        digito = 12;
+                    } else if (digito == 'D' || digito == 'd') {
+                        digito = 13;
+                    } else if (digito == 'E' || digito == 'e') {
+                        digito = 14;
+                    } else if (digito == 'F' || digito == 'f') {
+                        digito = 15;
+                    } else {
+                        digito = digito;
+                    }
+
+                    valorEmDecimal += digito * (16 ** potencia); // FAZ O CÁLCULO DA CONVERSÃO
+
+                    tamanho--; // 'REMOVE' O ÚLTIMO CARACTERE
+                    potencia++;
+                }
+            } else {
+                alert('INSIRA UM VALOR VÁLIDO');
+            }
+        } else {
+            alert('BASE NUMÉRICA INVÁLIDA!!! SELECIONE UMA BASE VÁLIDA');
+        }
+
+        //EXIBINDO MENSAGEM
+        if (valorEmDecimal != '') {
+            calculadora_resultado.innerHTML = `
+            <h3>Resultado:</h3>
+            <div class="base_resultado">
+                <p class="titulo_resultado">Decimal:</p>
+                <p class="valor_resultado">${valorEmDecimal}</p>
+            </div>
+
+            <div class="base_resultado">
+                <p class="titulo_resultado">Binário:</p>
+                <p class="valor_resultado">${valorEmDecimal.toString(2)}</p>
+            </div>
+
+            <div class="base_resultado">
+                <p class="titulo_resultado">Octal:</p>
+                <p class="valor_resultado">${valorEmDecimal.toString(8)}</p>
+            </div>
+
+            <div class="base_resultado">
+                <p class="titulo_resultado">HexaDecimal:</p>
+                <p class="valor_resultado">${valorEmDecimal.toString(16)}</p>
+            </div>
+        `
+        }
+    }
+
+</script>

@@ -1,0 +1,1 @@
+# calculadora-sptecher-s
