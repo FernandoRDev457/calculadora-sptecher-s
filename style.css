@@ -295,3 +295,69 @@ footer {
         margin: 10px 0px;
     }
 }
+
+
+@media (max-width: 980px) {
+    /* BANNER CALCULADORA */
+    .img_banner {
+        .banner {
+            padding: 50px;
+            align-items: center;
+        }
+
+        .subtitulo_banner {
+            text-align: center;
+        }
+
+        .titulo_banner {
+            font-size: 35px;
+            text-align: center;
+        }
+
+        .comentario_banner {
+            font-size: 16px;
+            width: auto;
+        }
+    }
+
+    /* SOBE A CALCULADORA */
+    .sobre_calculadora {
+        .descricao_calculadora {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .titulo_base_numerica {
+            font-size: 25px;
+        }
+
+        .bases_numericas_calculadora {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    /* CALCULADORA */
+    .calculadora {
+        width: auto;
+        height: auto;
+        margin: auto 20px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        gap: 10px;
+
+        .calculadora_parametros {
+            margin: 0px;
+            height: 500px;
+        }
+
+        /* CAMPOS DE RESULTADOS */
+        .calculadora_resultado {
+            height: 480px;
+        }
+    }
+}
